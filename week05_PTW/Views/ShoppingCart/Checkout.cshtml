@@ -1,0 +1,127 @@
+﻿@model CheckoutRequest
+
+
+@*@{
+    var culture = CultureInfor.CurrentCulture.Name;
+} *@
+
+@*@if (TempData["SucessMsg"] != null)
+{
+    <span class="alert alert-success">
+        @TempData["SucessMsg"]
+    </span>
+}*@
+
+@*else{*@
+<div class="row">
+    <div class="col-md-4 offset-4">
+        <section>
+            @*  <form id="account" method="post" asp-action="Checkout" asp-controller="ShoppingCart" >
+            <h2>Input information</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+            <label class="form-label" for="inputName">Name</label>
+            <div class="controls">
+            <input type="text" id="inputName" placeholder="Name" asp-for="@Model.Name">
+            </div>
+
+            </div>
+            <div class="form-floating">
+            <label class="form-label" for="inputAddress">Address</label>
+            <div class="controls">
+            <input type="text" id="inputAddress" placeholder="Address" asp-for="@Model.Address">
+            </div>
+            </div>
+            <div class="form-floating">
+            <label class="form-label" for="inputPhoneNumber">PhoneNumber</label>
+            <div class="controls">
+            <input type="text" id="inputPhoneNumber" placeholder="PhoneNumber" asp-for="@Model.PhoneNumber">
+            </div>
+            </div>
+
+            <div class="form-floating">
+            <label class="form-label" for="inputEmail">Email</label>
+            <div class="controls">
+            <input type="text" id="inputEmail" placeholder="Email" asp-for="@Model.Email">
+            </div>
+            </div>
+            <div class="form-floating">
+            <label class="form-label" for="inputCreatedAt">CreatedAt</label>
+            <div class="controls">
+            <input type="text" id="inputCreatedAt" placeholder="CreatedAt" asp-for="@Model.CreatedAt">
+            </div>
+            </div>
+
+
+            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary checkout">Submit</button>
+            <a class="btn btn-outline-primary-2 btn-order btn-block">CHECKOUT</a>
+
+
+            </form>*@
+
+            <form id="account" method="post" asp-action="Checkout" asp-controller="ShoppingCart">
+                <h2>Information of user</h2>
+
+                <div class="form-floating">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="@Model.Email" class="form-control" autocomplete="current-password" aria-required="true" />
+
+
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="@Model.Name" class="form-control" autocomplete="current-password" aria-required="true" />
+
+                </div>
+                <div class="form-floating">
+                    <label asp-for="Address" class="form-label"></label>
+                    <input asp-for="@Model.Address" class="form-control" autocomplete="current-password" aria-required="true" />
+
+                </div>
+
+                <div class="form-floating">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="@Model.PhoneNumber" class="form-control" autocomplete="current-password" aria-required="true" />
+
+                </div>
+
+               @* <div class="form-floating">
+                    <label asp-for="CreatedAt" class="form-label"></label>
+                    <input asp-for="@Model.CreatedAt" class="form-control" autocomplete="current-password" aria-required="true" />
+
+                </div>*@
+
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+
+</div>
+@*}*@
+@*@section Scripts {
+    <script>
+
+            $(".checkout").click(function (event) {
+                event.preventDefault();
+                var productid = $(this).attr("data-productid");
+                var quantity = $("#quantity-" + productid).val();
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.RouteUrl("checkout")",
+                    data: {
+                        productid: productid,
+                        quantity: quantity
+                    },
+                    success: function (result) {
+                        window.location.href = "@Url.RouteUrl("/")";
+                    }
+                });
+            });
+        });
+    </script>
+      }*@

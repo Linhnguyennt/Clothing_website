@@ -1,0 +1,11 @@
+﻿@model week05_PTW.Data.CartItem
+
+
+    <div class="product-details-quantity">
+        <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+    <input type="number" class="form-control" step="1" data-decimals="0" asp-for="@Model.quantity" id="@($"quantity-{Model.product.Id}")" required />
+
+</div>
+
+    <!-- End .product-details-quantity -->
+

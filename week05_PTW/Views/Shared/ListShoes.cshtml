@@ -1,0 +1,38 @@
+﻿@model List<week05_PTW.Data.Product>
+
+@{
+    var groupAll = ViewBag.groupAll;
+}
+@foreach (var p in groupAll)
+{
+    
+
+<figure class="product-media">
+        <span class="product-label label-circle label-sale">@p.Tag</span>
+
+
+        <a asp-action="ListSales" asp-controller="Product">
+            <img src="~/data/assets/images/demos/demo-5/products/@p.Image" alt="Product image" class="product-image">
+            <img src="~/data/assets/images/demos/demo-5/products/@p.ImageHover" alt="Product image" class="product-image-hover">
+                                </a>
+
+                                <div class="product-action-vertical">
+                                    <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                </div><!-- End .product-action-vertical -->
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body">
+                                <div class="product-cat">
+                                    <a href="#">Furniture</a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="product.html">@p.Name</a></h3><!-- End .product-title -->
+                                <div class="product-price">
+                                    <span class="new-price">@p.PriceSale</span>
+                                    <span class="old-price">@p.Price</span>
+
+                                </div><!-- End .product-price -->
+                            </div><!-- End .product-body -->
+                            <div class="product-action">
+                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                            </div><!-- End .product-action -->
+}
