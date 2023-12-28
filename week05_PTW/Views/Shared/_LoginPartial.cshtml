@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using week05_PTW.Data
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+
+
+<div class="header-top">
+    <div class="container">
+        <div class="header-left">
+            <p>Special collection already available.</p><a href="#">&nbsp;Read more ...</a>
+
+        </div><!-- End .header-left -->
+
+        <div class="header-right">
+
+            <ul class="top-menu">
+                <li>
+                    <a href="#">Links</a>
+                    <ul>
+                        <li>
+                            <div class="header-dropdown">
+                                <a href="#">USD</a>
+                                <div class="header-menu">
+                                    <ul>
+                                        <li><a href="#">EUR</a></li>
+                                        <li><a href="#">USD</a></li>
+                                    </ul>
+                                </div><!-- End .header-menu -->
+                            </div>
+                        </li>
+                        <li>
+                            <div class="header-dropdown">
+                                <a href="#">English</a>
+                                <div class="header-menu">
+                                    <ul>
+                                        <li><a href="#">English</a></li>
+                                        <li><a href="#">French</a></li>
+                                        <li><a href="#">Spanish</a></li>
+                                    </ul>
+                                </div><!-- End .header-menu -->
+                            </div>
+                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li> <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a></li>
+                            <li>
+                                <form id="logoutForm" class="form-inline" asp-controller="User" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a class="nav-link text-dark" id="register" asp-controller="User" asp-action="Register">Register</a></li>
+                            <li>
+                                <a class="nav-link text-dark" id="login" asp-controller="User" asp-action="Login">Login</a>
+                            </li>
+                        }
+
+                    </ul>
+                </li>
+            </ul><!-- End .top-menu -->
+        </div><!-- End .header-right -->
+
+    </div><!-- End .container -->
+</div><!-- End .header-top -->
+
+
+
+

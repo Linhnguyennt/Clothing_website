@@ -1,0 +1,85 @@
+﻿@model List<week05_PTW.Data.Product>
+
+@{
+    var groupAll = ViewBag.groupAll;
+}
+
+<h2>All Product</h2>
+@foreach (var a in Model)
+{
+<div class="product product-11 text-center">
+    
+        
+    
+    <figure class="product-media">
+                                <span class="product-label label-new"></span>
+            <a asp-action="Details" asp-controller="Product">
+                                    <img src="~/data/assets/images/demos/demo-5/products/@a.Image" alt="Product image" class="product-image">
+                <img src="~/data/assets/images/demos/demo-5/products/@a.ImageHover" alt="Product image" class="product-image-hover">
+                            </a>
+
+                            <div class="product-action-vertical">
+                                <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                            </div><!-- End .product-action-vertical -->
+
+                        </figure>
+
+                        <!-- End .product-media -->
+
+                        <div class="product-body">
+                            <h3 class="product-title"><a href="product.html"></a>@a.Name</h3><!-- End .product-title -->
+                            <div class="product-price">
+                                $@a.Price
+                            </div><!-- End .product-price -->
+                        </div>
+
+                        <!-- End .product-body -->
+                        <div class="product-action">
+            <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-productid="@a.Id" class="btn-product btn-cart"><span>add to cart</span></a>
+                        </div>
+
+                            <!-- End .product-action -->
+    
+                        </div>
+    }
+
+                        <h2>Top Sale</h2>
+                        @foreach (var a in groupAll)
+    {
+<div class="product product-11 text-center">
+    
+    
+
+        <figure class="product-media">
+            <span class="product-label label-new"></span>
+            <a asp-action="Details" asp-controller="Product">
+                <img src="~/data/assets/images/demos/demo-5/products/@a.Image" alt="Product image" class="product-image">
+                <img src="~/data/assets/images/demos/demo-5/products/@a.ImageHover" alt="Product image" class="product-image-hover">
+            </a>
+
+            <div class="product-action-vertical">
+                <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+            </div><!-- End .product-action-vertical -->
+
+        </figure>
+
+        <!-- End .product-media -->
+
+        <div class="product-body">
+            <h3 class="product-title"><a href="product.html"></a>@a.Name</h3><!-- End .product-title -->
+            <div class="product-price">
+                $@a.Price
+            </div><!-- End .product-price -->
+        </div>
+
+        <!-- End .product-body -->
+        <div class="product-action">
+            <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-productid="@a.Id" class="btn-product btn-cart"><span>add to cart</span></a>
+        </div>
+
+        <!-- End .product-action -->
+   
+
+    
+</div>
+}
